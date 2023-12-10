@@ -132,14 +132,32 @@ function makeLocalDevConfig(env, EXAMPLE_DIR = LIB_DIR, externals = {}) {
           test: /\.(js|ts|tsx)$/,
           use: ['source-map-loader'],
           enforce: 'pre',
-          exclude: [/node_modules\/react-palm/, /node_modules\/react-data-grid/]
+          exclude: [/node_modules\/react-palm/, /node_modules\/react-data-grid/, /node_modules\/@flowmap.gl/]
         },
         // for compiling apache-arrow ESM module
         {
           test: /\.mjs$/,
           include: /node_modules\/apache-arrow/,
           type: 'javascript/auto'
-        }
+        },
+        {
+          // Unfortunately, webpack doesn't import library source maps on its own...
+          test: /\.(js|ts|tsx)$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { targets: "defaults" }]
+              ],
+              plugins: [
+                '@babel/plugin-transform-nullish-coalescing-operator',
+                '@babel/plugin-transform-optional-chaining',
+              ]
+            }
+          },
+          enforce: 'pre',
+          include: /node_modules\/@flowmap.gl/
+        },
       ]
     },
     // Optional: Enables reading mapbox token from environment variable
@@ -183,6 +201,8 @@ function makeBabelRule(env, exampleDir) {
         '@babel/plugin-proposal-optional-chaining',
         '@babel/plugin-proposal-export-namespace-from',
         '@babel/plugin-transform-runtime',
+        '@babel/plugin-transform-nullish-coalescing-operator',
+        '@babel/plugin-transform-optional-chaining',
         [
           'search-and-replace',
           {

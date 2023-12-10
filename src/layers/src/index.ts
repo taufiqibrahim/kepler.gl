@@ -49,6 +49,7 @@ export {getS2Center} from './s2-geometry-layer/s2-utils';
 export {default as AggregationLayer} from './aggregation-layer';
 import {LAYER_TYPES} from '@kepler.gl/constants';
 export {parseGeoJsonRawFeature} from './geojson-layer/geojson-utils';
+import {default as FlowmapGlLayer} from './flowmap-gl-layer/flowmap-gl-layer';
 // base layer
 // eslint-disable-next-line prettier/prettier
 export type {
@@ -77,7 +78,8 @@ export const KeplerGlLayers = {
   H3Layer,
   ScenegraphLayer,
   TripLayer,
-  S2GeometryLayer
+  S2GeometryLayer,
+  FlowmapGlLayer,
 };
 
 export type LayerClassesType = typeof LayerClasses;
@@ -94,7 +96,8 @@ export const LayerClasses = {
   [LAYER_TYPES.hexagonId]: H3Layer,
   [LAYER_TYPES['3D']]: ScenegraphLayer,
   [LAYER_TYPES.trip]: TripLayer,
-  [LAYER_TYPES.s2]: S2GeometryLayer
+  [LAYER_TYPES.s2]: S2GeometryLayer,
+  [LAYER_TYPES.flowmapGl]: FlowmapGlLayer
 };
 
 export * from './mapbox-utils';

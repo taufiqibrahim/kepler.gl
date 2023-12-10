@@ -60,6 +60,7 @@ import sampleS2Data, {config as s2MapConfig, dataId as s2DataId} from './data/sa
 import sampleAnimateTrip, {animateTripDataId} from './data/sample-animate-trip-data';
 import sampleIconCsv, {config as savedMapConfig} from './data/sample-icon-csv';
 import sampleGpsData from './data/sample-gps-data';
+import sampleFlowmapData, {config as flowmapMapConfig, dataId as flowmapDataId} from './data/sample-flowmap-data';
 
 import {processCsvData, processGeojson} from '@kepler.gl/processors';
 /* eslint-enable no-unused-vars */
@@ -196,6 +197,7 @@ class App extends Component {
     // this._loadS2Data();
     // this._loadScenegraphLayer();
     // this._loadGpsData();
+    // this._loadFlowmapData();
   }
 
   _loadPointData() {
@@ -383,6 +385,28 @@ class App extends Component {
       })
     );
   }
+
+  _loadFlowmapData() {
+    console.log("_loadFlowmapData()")
+    this.props.dispatch(
+      addDataToMap({
+        datasets: [
+          {
+            info: {
+              label: 'Flowmap Data',
+              id: flowmapDataId
+            },
+            data: processCsvData(sampleFlowmapData)
+          }
+        ],
+        config: flowmapMapConfig,
+        options: {
+          keepExistingConfig: true
+        }
+      })
+    );
+  }
+
   _toggleCloudModal = () => {
     // TODO: this lives only in the demo hence we use the state for now
     // REFCOTOR using redux

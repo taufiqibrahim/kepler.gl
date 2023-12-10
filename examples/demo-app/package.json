@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.1.2",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.23.4",
     "@carto/toolkit": "0.0.1-rc.18",
     "@kepler.gl/actions": "^3.0.0-alpha.1",
     "@kepler.gl/components": "^3.0.0-alpha.1",

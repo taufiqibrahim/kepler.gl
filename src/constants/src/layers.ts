@@ -508,7 +508,8 @@ export const LAYER_TYPES = keyMirror({
   hexagonId: null,
   '3D': null,
   trip: null,
-  s2: null
+  s2: null,
+  flowmapGl: null
 });
 
 export const EDITOR_AVAILABLE_LAYERS: string[] = [

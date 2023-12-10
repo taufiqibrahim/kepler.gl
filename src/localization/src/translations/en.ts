@@ -472,7 +472,16 @@ export default {
     hexagon: {
       worldUnitSize: 'Hexagon Radius (km)'
     },
-    hex_id: 'hex id'
+    hex_id: 'hex id',
+    flowmap: {
+      orig_id: 'Origin ID',
+      orig_lat: 'Origin latitude',
+      orig_lng: 'Origin longitude',
+      dest_id: 'Destination ID',
+      dest_lat: 'Destination latitude',
+      dest_lng: 'Destination longitude',
+      count: 'Counter metric'
+    }
   },
   color: {
     customPalette: 'Custom Palette',
